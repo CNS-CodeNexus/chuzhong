@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="初中语文教学笔记与资料整理">
+  <title>初中语文笔记</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <h1 class="header-title">初中语文笔记</h1>
+      <p class="header-subtitle">教学资料 · 知识整理 · 系统学习</p>
+    </div>
+  </header>
+
+  <nav class="nav" id="nav">
+    <div class="container">
+      <ul class="nav-list" id="navList"></ul>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="container">
+
+      <section class="overview" id="overview">
+        <div class="overview-card">
+          <h2 class="overview-title">📖 知识概览</h2>
+          <p>共 <strong id="totalTopics">0</strong> 个知识点 · <strong id="totalImages">0</strong> 张教学图示</p>
+          <div class="overview-stats" id="overviewStats"></div>
+        </div>
+      </section>
+
+      <section class="topics" id="topics"></section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>初中语文笔记 &copy; <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="关闭">&times;</button>
+      <img class="modal-image" id="modalImage" src="" alt="">
+      <div class="modal-info" id="modalInfo"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
