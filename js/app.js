@@ -61,7 +61,8 @@
     document.getElementById('pageTitle').textContent = document.title;
 
     document.getElementById('topicHeaderInfo').textContent = topic.icon + ' ' + topic.name;
-    document.getElementById('topicDescription').textContent = topic.summary;
+    document.getElementById('topicHeroTitle').textContent = topic.name;
+    document.getElementById('topicHeroDetail').textContent = topic.detail || topic.summary;
 
     var container = document.getElementById('topicImages');
     container.innerHTML = '';

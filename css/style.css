@@ -231,16 +231,31 @@ body {
   white-space: nowrap;
 }
 
-/* ── Topic Description ── */
+/* ── Topic Hero ── */
 
-.topic-description {
+.topic-hero {
   max-width: 720px;
-  margin: 36px auto 32px;
+  margin: 48px auto 40px;
   padding: 0 24px;
   text-align: center;
+}
+
+.topic-hero-title {
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 24px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.topic-hero-detail {
   font-size: 0.95rem;
   color: var(--color-text-secondary);
-  line-height: 1.9;
+  line-height: 2;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* ── Seamless Images ── */
@@ -305,9 +320,17 @@ body {
     padding: 24px 20px;
   }
 
-  .topic-description {
+  .topic-hero {
+    margin: 32px auto 28px;
     padding: 0 16px;
-    margin-top: 24px;
+  }
+
+  .topic-hero-title {
+    font-size: 3rem;
+    letter-spacing: 16px;
+  }
+
+  .topic-hero-detail {
     font-size: 0.9rem;
   }
 
