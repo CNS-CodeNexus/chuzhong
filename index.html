@@ -1,34 +1,176 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="初中语文教学笔记与资料整理">
-  <title>初中语文笔记</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>初中语文笔记</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f0eb;--surface:#fff;--primary:#8b5a2b;--primary-light:#c49a6c;--accent:#d4a373;--text:#2c2c2c;--text2:#6b6b6b;--border:#e8e0d6;--shadow:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 8px 24px rgba(0,0,0,.1);--radius:16px;--font-serif:"Noto Serif SC","Source Han Serif SC",STSong,SimSun,serif;--font-sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;--tr:.3s cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+.container{max-width:1000px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:64px 0 56px;text-align:center;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px);pointer-events:none}
+.header-title{font-family:var(--font-serif);font-size:2.6rem;font-weight:700;letter-spacing:6px;position:relative;z-index:1}
+.header-subtitle{margin-top:10px;font-size:1rem;opacity:.8;letter-spacing:4px;position:relative;z-index:1}
+
+/* Home grid */
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;padding:48px 0}
+.topic-card{background:var(--surface);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);border:1px solid var(--border);cursor:pointer;text-decoration:none;color:inherit;display:block;transition:var(--tr);overflow:hidden}
+.topic-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--primary-light);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
+.topic-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--accent)}
+.topic-card:hover::before{transform:scaleX(1)}
+.topic-card-icon{font-size:2.2rem;margin-bottom:14px;display:block}
+.topic-card-name{font-family:var(--font-serif);font-size:1.35rem;font-weight:600;color:var(--primary);margin-bottom:10px}
+.topic-card-summary{font-size:.9rem;color:var(--text2);line-height:1.8;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.topic-card-meta{font-size:.82rem;color:var(--text2)}
+.topic-card-meta span{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:var(--bg);border-radius:20px}
+
+/* Topic page */
+.topic-header-bar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+.topic-header-bar .container{display:flex;align-items:center;gap:16px;padding:12px 24px}
+.back-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 16px;font-size:.9rem;color:var(--text2);background:none;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:var(--font-sans);transition:var(--tr)}
+.back-btn:hover{color:var(--primary);border-color:var(--primary-light);background:rgba(139,90,43,.05)}
+.topic-header-info{font-family:var(--font-serif);font-size:1.1rem;font-weight:600;color:var(--primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.topic-hero{max-width:720px;margin:48px auto 40px;padding:0 24px;text-align:center}
+.topic-hero-title{font-family:var(--font-serif);font-size:4.5rem;font-weight:700;color:var(--primary);letter-spacing:24px;line-height:1.2;margin-bottom:20px}
+.topic-hero-detail{font-size:.95rem;color:var(--text2);line-height:2;max-width:600px;margin:0 auto}
+
+.topic-images{display:flex;flex-direction:column;max-width:900px;margin:0 auto 48px;background:var(--surface);box-shadow:var(--shadow);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
+.topic-images img{display:block;width:100%;height:auto;vertical-align:bottom}
+
+/* Footer */
+.footer{text-align:center;padding:24px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border)}
+
+/* Pages */
+.page-home .topic-grid{display:grid}
+.page-topic .topic-grid{display:none}
+
+@media(max-width:640px){
+  .header-title{font-size:1.8rem;letter-spacing:3px}
+  .header{padding:44px 0 36px}
+  .container{padding:0 16px!important}
+  .topic-grid{grid-template-columns:1fr;padding:24px 0;gap:16px}
+  .topic-card{padding:24px 20px}
+  .topic-hero-title{font-size:3rem;letter-spacing:16px}
+  .topic-images{border-radius:0;border-left:none;border-right:none}
+}
+</style>
 </head>
-<body class="page-home">
+<body id="app">
 
-  <header class="header">
-    <div class="container">
-      <h1 class="header-title">初中语文笔记</h1>
-      <p class="header-subtitle">选择板块，开始学习</p>
-    </div>
-  </header>
+<header class="header" id="pageHeader">
+  <div class="container">
+    <h1 class="header-title">初中语文笔记</h1>
+    <p class="header-subtitle" id="headerSubtitle">选择板块，开始学习</p>
+  </div>
+</header>
 
-  <main class="main">
-    <div class="container">
-      <div class="topic-grid" id="topicGrid"></div>
-    </div>
-  </main>
+<nav class="topic-header-bar" id="topicBar" style="display:none">
+  <div class="container">
+    <button class="back-btn" id="backBtn">&larr; 返回</button>
+    <span class="topic-header-info" id="topicHeaderInfo"></span>
+  </div>
+</nav>
 
-  <footer class="footer">
-    <div class="container">
-      <p>初中语文笔记 &copy; <span id="year"></span> &middot; Power by CodeNexus</p>
-    </div>
-  </footer>
+<main class="main">
+  <div class="container">
+    <div class="topic-grid" id="topicGrid"></div>
+  </div>
+  <div class="topic-hero" id="topicHero" style="display:none">
+    <div class="topic-hero-title" id="topicHeroTitle"></div>
+    <div class="topic-hero-detail" id="topicHeroDetail"></div>
+  </div>
+  <div class="topic-images" id="topicImages" style="display:none"></div>
+</main>
 
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+<footer class="footer">
+  <div class="container">
+    <p>初中语文笔记 &copy; <span id="year"></span> &middot; Power by CodeNexus</p>
+  </div>
+</footer>
+
+<script>
+var TOPICS=[{id:'biyu',icon:'🎯',name:'比喻',summary:'比喻是一种常用的修辞手法，用跟甲事物有相似之点的乙事物来描写或说明甲事物。',detail:'比喻的标准是本体和喻体不同类。明喻有明显比喻词，如"像、仿佛、若"等；暗喻用"是、成为"等表示；借喻只出现喻体，可通过文中不合时宜的名词判断。',path:'jiao/比喻',files:['1.png','2.png','3.png','4.png','5.png']}];
+
+(function(){'use strict';
+var year=document.getElementById('year');
+if(year)year.textContent=new Date().getFullYear();
+
+var hash=window.location.hash.slice(1);
+if(hash){showTopic(hash)}else{showHome()}
+
+document.getElementById('topicGrid').addEventListener('click',function(e){
+  var card=e.target.closest('.topic-card');
+  if(card){showTopic(card.dataset.id)}
+});
+
+document.getElementById('backBtn').addEventListener('click',showHome);
+
+window.addEventListener('hashchange',function(){
+  var h=window.location.hash.slice(1);
+  if(h){showTopic(h)}else{showHome()}
+});
+
+function showHome(){
+  window.location.hash='';
+  document.getElementById('pageHeader').style.display='block';
+  document.getElementById('headerSubtitle').textContent='选择板块，开始学习';
+  document.getElementById('topicBar').style.display='none';
+  document.getElementById('topicGrid').style.display='grid';
+  document.getElementById('topicHero').style.display='none';
+  document.getElementById('topicImages').style.display='none';
+  renderHome();
+}
+
+function showTopic(id){
+  var topic=findTopic(id);
+  if(!topic)return;
+  window.location.hash=id;
+  document.getElementById('pageHeader').style.display='none';
+  document.getElementById('topicBar').style.display='block';
+  document.getElementById('topicGrid').style.display='none';
+  document.getElementById('topicHero').style.display='block';
+  document.getElementById('topicImages').style.display='flex';
+  document.title=topic.name+' — 初中语文笔记';
+  document.getElementById('topicHeaderInfo').textContent=topic.icon+' '+topic.name;
+  document.getElementById('topicHeroTitle').textContent=topic.name;
+  document.getElementById('topicHeroDetail').textContent=topic.detail||topic.summary;
+  var container=document.getElementById('topicImages');
+  container.innerHTML='';
+  topic.files.forEach(function(file,i){
+    var img=document.createElement('img');
+    img.loading='lazy';
+    img.src=topic.path+'/'+file;
+    img.alt=topic.name+' 图示 '+(i+1);
+    container.appendChild(img);
+  });
+}
+
+function renderHome(){
+  var grid=document.getElementById('topicGrid');
+  grid.innerHTML='';
+  TOPICS.forEach(function(t){
+    var a=document.createElement('a');
+    a.className='topic-card';
+    a.href='#'+t.id;
+    a.dataset.id=t.id;
+    a.innerHTML='<span class="topic-card-icon">'+t.icon+'</span><div class="topic-card-name">'+t.name+'</div><div class="topic-card-summary">'+t.summary+'</div><div class="topic-card-meta"><span>📄 '+t.files.length+' 张图示</span></div>';
+    grid.appendChild(a);
+  });
+}
+
+function findTopic(id){
+  for(var i=0;i<TOPICS.length;i++){if(TOPICS[i].id===id)return TOPICS[i]}
+  return null;
+}
+
+if(!window.location.hash.slice(1)){renderHome()}
+})();
+</script>
 </body>
 </html>
