@@ -95,7 +95,8 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 </footer>
 
 <script>
-var TOPICS=[{id:'biyu',icon:'🎯',name:'比喻',summary:'比喻是一种常用的修辞手法，用跟甲事物有相似之点的乙事物来描写或说明甲事物。',detail:'比喻的标准是本体和喻体不同类。明喻有明显比喻词，如"像、仿佛、若"等；暗喻用"是、成为"等表示；借喻只出现喻体，可通过文中不合时宜的名词判断。',path:'jiao/比喻',files:['1.png','2.png','3.png','4.png','5.png']}];
+var CDN='https://cdn.jsdelivr.net/gh/CNS-CodeNexus/chuzhong@main';
+var TOPICS=[{id:'biyu',icon:'🎯',name:'比喻',summary:'比喻是一种常用的修辞手法，用跟甲事物有相似之点的乙事物来描写或说明甲事物。',detail:'比喻的标准是本体和喻体不同类。明喻有明显比喻词，如"像、仿佛、若"等；暗喻用"是、成为"等表示；借喻只出现喻体，可通过文中不合时宜的名词判断。',path:'jiao/%E6%AF%94%E5%96%BB',files:['1.png','2.png','3.png','4.png','5.png']}];
 
 (function(){'use strict';
 var year=document.getElementById('year');
@@ -145,7 +146,7 @@ function showTopic(id){
   topic.files.forEach(function(file,i){
     var img=document.createElement('img');
     img.loading='lazy';
-    img.src=topic.path+'/'+file;
+    img.src=CDN+'/'+topic.path+'/'+file;
     img.alt=topic.name+' 图示 '+(i+1);
     container.appendChild(img);
   });
