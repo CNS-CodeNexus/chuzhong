@@ -1,0 +1,33 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "CodeNexus-AI": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "CodeNexus-AI",
+      "options": {
+        "apiKey": "{env:OPENCODE_API_KEY_HOME}",
+        "baseURL": "https://newapi.slimeoj.online:6130/v1"
+      },
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "deepseek-v4-pro",
+          "reasoning": true
+        }
+      }
+    },
+    "CodeNexus AAII": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "CodeNexus AAII",
+      "options": {
+        "apiKey": "{env:OPENCODE_API_KEY_HOME}",
+        "baseURL": "https://newapi.slimeoj.online:6130/v1"
+      },
+      "models": {
+        "deepseek-v4-flash": {
+          "name": "deepseek-v4-flash",
+          "reasoning": true
+        }
+      }
+    }
+  }
+}
